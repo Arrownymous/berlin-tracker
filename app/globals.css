@@ -336,6 +336,34 @@ a.btn{text-decoration:none}
 .login-err{font-size:14px;font-weight:600;color:#FFB4A8}
 .login-note{font-size:13px;color:var(--on-photo-2)}
 
+/* Routekaart */
+.route{margin:0}
+.route svg{display:block;width:100%;height:auto;overflow:visible}
+.route-base{fill:none;stroke:var(--plan);stroke-width:5;stroke-linejoin:round;stroke-linecap:round}
+.route-base.lapped{stroke:color-mix(in srgb,var(--accent) 35%,var(--bg))}
+.route-done{fill:none;stroke:var(--accent);stroke-width:8;stroke-linejoin:round;stroke-linecap:round}
+.route-tick circle{fill:var(--bg);stroke:var(--ink-3);stroke-width:1.5}
+.route-tick text{font-size:11px;font-weight:700;fill:var(--ink-2);text-anchor:middle}
+.route-tick.passed circle{fill:var(--accent);stroke:var(--accent)}
+.route-tick.passed text{fill:var(--on-accent)}
+.route-lm circle{fill:var(--bg);stroke:var(--ink);stroke-width:2}
+.route-lm text{font-size:15px;font-weight:600;fill:var(--ink-2);letter-spacing:.01em}
+.route-lm.passed circle{fill:var(--ink)}
+.route-lm.passed text{fill:var(--ink)}
+.route-lm.next circle{fill:var(--bg);stroke:var(--accent);stroke-width:3}
+.route-lm.next text{fill:var(--accent);font-weight:800}
+.route-flag circle{fill:var(--ink)}
+.route-flag text{font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;fill:var(--ink)}
+.route-runner circle{fill:var(--accent);stroke:var(--bg);stroke-width:3}
+.route-runner .route-pulse{fill:var(--accent);stroke:none;opacity:.35;transform-box:fill-box;transform-origin:center;animation:pulse 2s ease-out infinite}
+@keyframes pulse{0%{transform:scale(1);opacity:.4}100%{transform:scale(2.6);opacity:0}}
+.route-cap{margin-top:14px;font-size:12px;color:var(--ink-3)}
+.route-stats{display:flex;flex-direction:column;gap:22px;margin:0}
+.route-stats dd{margin:8px 0 0;display:flex;flex-direction:column;gap:4px}
+.route-stats dd b{font-size:clamp(28px,2.6vw,40px);font-weight:800;font-stretch:87.5%;letter-spacing:-.03em;line-height:1}
+.route-stats dd b.route-next{font-size:22px;font-stretch:100%;letter-spacing:-.015em;color:var(--accent)}
+.route-stats dd span{font-size:13px;color:var(--ink-2)}
+
 /* Mijlpalen */
 .ms{grid-template-columns:repeat(4,minmax(0,1fr))}
 .ms::after{content:"";background:var(--bg);grid-column:auto/-1}
@@ -514,6 +542,16 @@ dialog::backdrop{background:rgba(20,20,19,.45);-webkit-backdrop-filter:blur(3px)
   .ov-goal .label{display:none}
   .ov-goal b{font-size:24px}
   .ms-item{min-height:0}
+  .route-stats{flex-direction:row;flex-wrap:wrap;gap:18px 28px}
+  .route-stats>div{min-width:120px}
+  .route-stats>div:nth-child(2){order:3;flex-basis:100%}
+  .route-lm text{display:none}
+  .route-lm.next text{display:block;font-size:30px}
+  .route-tick circle{transform-box:fill-box;transform-origin:center;transform:scale(1.45)}
+  .route-tick text{font-size:16px}
+  .route-flag text{font-size:24px}
+  .route-base{stroke-width:8}
+  .route-done{stroke-width:12}
   .ms-title{font-size:18px}
   .stats-wrap{margin-top:28px}
   .stat .fig{font-size:44px}

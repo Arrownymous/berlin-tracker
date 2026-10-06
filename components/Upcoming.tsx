@@ -7,7 +7,7 @@ import { Fig, Section } from "./ui";
 /** De eerstvolgende trainingen die nog open staan, groot uitgelicht. */
 export default function Upcoming({ sessions, today, onLog }: { sessions: Session[]; today: string; onLog: (p: LogPreset) => void }) {
   return (
-    <Section id="komend" num="02" title="Komende trainingen" lead="Wat er op het programma staat, vanaf vandaag.">
+    <Section id="komend" num="03" title="Komende trainingen" lead="Wat er op het programma staat, vanaf vandaag.">
       {sessions.length === 0 ? (
         <p className="empty">Geen trainingen meer gepland. Tijd om te genieten van Berlijn.</p>
       ) : (

@@ -14,7 +14,7 @@ export default function HeartRate({ maxHr, onMaxHr, counts }: Props) {
   return (
     <Section
       id="hartslag"
-      num="05"
+      num="06"
       title="Hartslag"
       lead="Stel één keer je max hartslag in; elke gelogde gemiddelde hartslag wordt dan een zone."
     >

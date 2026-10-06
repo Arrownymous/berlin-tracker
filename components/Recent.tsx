@@ -7,7 +7,7 @@ import { Fig, Section } from "./ui";
 /** De laatste drie trainingen als korte verslagen. */
 export default function Recent({ entries, maxHr }: { entries: Entry[]; maxHr: number | null }) {
   return (
-    <Section id="logboek" num="06" title="Recente trainingen" lead="Je laatste sessies, met hoe ze voelden.">
+    <Section id="logboek" num="07" title="Recente trainingen" lead="Je laatste sessies, met hoe ze voelden.">
       {entries.length === 0 ? (
         <p className="empty">Nog niets gelogd. Je eerste training verschijnt hier.</p>
       ) : (

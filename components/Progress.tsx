@@ -33,7 +33,7 @@ export default function Progress({ range, onRange, total, planToDate, planTotal,
   return (
     <Section
       id="voortgang"
-      num="03"
+      num="04"
       title="Voortgang"
       lead="Je plan tegenover wat je echt liep, week na week richting de start."
       aside={

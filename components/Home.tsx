@@ -18,6 +18,7 @@ import Progress, { type Range } from "./Progress";
 import HeartRate from "./HeartRate";
 import Recent from "./Recent";
 import Milestones from "./Milestones";
+import RouteMap from "./RouteMap";
 import { computeMilestones } from "@/lib/milestones";
 
 const NARROW = 720;
@@ -160,6 +161,7 @@ export default function Home() {
               onPrev={vw > 0 ? () => setViewWeek(vw - 1) : undefined}
               onNext={vw < 50 ? () => setViewWeek(vw + 1) : undefined}
             />
+            <RouteMap num="02" total={total} />
           </div>
 
           <PhotoBand photo={PHOTOS.finish} kicker="De finish" title={<>Onder de <em>Brandenburger Tor</em> door.</>} pos="50% 40%" tall>
@@ -184,7 +186,7 @@ export default function Home() {
           <PhotoBand photo={PHOTOS.oberbaum} kicker="Kreuzberg · Friedrichshain" title={<>Elke kilometer <em>telt.</em></>} pos="50% 50%" />
 
           <div className="wrap">
-            <Milestones num="04" items={milestones} />
+            <Milestones num="05" items={milestones} />
             <HeartRate maxHr={maxHr} onMaxHr={setMaxHr} counts={hrCounts} />
             <Recent entries={log.slice(0, 3)} maxHr={maxHr} />
             <div className="more">

@@ -32,6 +32,10 @@ export default function SiteFooter() {
               ))}
             </ul>
             <p>Foto&apos;s via Wikimedia Commons, verkleind voor het web.</p>
+            <p>
+              Routekaart bij benadering op basis van het parcours van 2023. Kaartdata ©{" "}
+              <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noreferrer">OpenStreetMap-bijdragers</a> (ODbL).
+            </p>
           </details>
         </div>
       </footer>

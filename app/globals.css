@@ -309,6 +309,20 @@ a.btn{text-decoration:none}
 .mini{position:relative;display:inline-block;width:64px;height:2px;background:var(--line);vertical-align:middle;margin-left:12px}
 .mini i{position:absolute;inset:0 auto 0 0;background:var(--accent)}
 
+/* Inlogpagina */
+.login{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:var(--on-photo);background:#0d0f12;overflow:hidden;isolation:isolate}
+.login-in{width:100%;max-width:1320px;margin:0 auto;padding:48px var(--gutter) calc(48px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;align-items:flex-start}
+.login .label{color:var(--on-photo-2)}
+.login-mark{font-size:clamp(64px,13vw,200px);margin-top:20px}
+.login-year{font-family:var(--serif);font-style:italic;font-size:clamp(48px,6vw,96px);line-height:.85;margin-top:14px}
+.login-form{display:flex;flex-direction:column;gap:12px;width:min(380px,100%);margin-top:40px;padding-top:24px;border-top:1px solid var(--on-photo-line)}
+.login-form input[type=password]{width:100%;min-height:54px;padding:12px 16px;font-size:18px;color:var(--ink);background:var(--on-photo);border:1px solid var(--on-photo);border-radius:2px}
+.login-form input[type=password]:focus{outline:2px solid var(--accent);outline-offset:2px}
+.login-form input[aria-invalid=true]{border-color:var(--loss);box-shadow:inset 0 0 0 1px var(--loss)}
+.login-form .btn{width:100%;padding:16px;margin-top:4px}
+.login-err{font-size:14px;font-weight:600;color:#FFB4A8}
+.login-note{font-size:13px;color:var(--on-photo-2)}
+
 /* Mijlpalen */
 .ms{grid-template-columns:repeat(4,minmax(0,1fr))}
 .ms::after{content:"";background:var(--bg);grid-column:auto/-1}

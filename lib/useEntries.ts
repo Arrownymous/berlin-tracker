@@ -56,6 +56,11 @@ export function useEntries() {
     (async () => {
       try {
         const r = await fetch("/api/entries", { cache: "no-store" });
+        if (r.status === 401) {
+          // Inlogcookie verlopen of wachtwoord gewijzigd: opnieuw inloggen.
+          window.location.href = `/login?next=${encodeURIComponent(location.pathname)}`;
+          return;
+        }
         if (r.status === 501) return setSync("local");
         if (!r.ok) return setSync("error");
         const { entries: remote } = (await r.json()) as { entries: Entry[] };

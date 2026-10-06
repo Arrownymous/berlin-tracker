@@ -24,7 +24,7 @@ Open http://localhost:3000. Zonder database wordt alles in je browser (localStor
    git push -u origin main
    ```
 2. Ga naar vercel.com → **Add New… → Project** → importeer de repo. Framework wordt automatisch herkend als Next.js. Klik **Deploy**.
-3. **Wachtwoord instellen:** Project → **Settings → Environment Variables** → voeg `SITE_PASSWORD` toe. Bij het openen van de site vraagt je browser om inloggen: gebruikersnaam maakt niet uit, wachtwoord is `SITE_PASSWORD`.
+3. **Wachtwoord instellen:** Project → **Settings → Environments → Production → Environment Variables** → voeg `SITE_PASSWORD` toe. Bij het openen van de site krijg je een inlogpagina; daarna blijf je op dat toestel een jaar ingelogd. Wijzig je het wachtwoord, dan wordt iedereen uitgelogd.
 4. **Sync tussen telefoon en laptop (optioneel):** Project → **Storage** → **Create Database** → kies **Upstash (Redis)** → koppel aan dit project. Vercel zet de variabelen (`KV_REST_API_URL` / `KV_REST_API_TOKEN` of `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN`) automatisch. Beide varianten worden ondersteund.
 5. **Redeploy** (Deployments → ⋯ → Redeploy) zodat de nieuwe variabelen actief worden.
 
@@ -43,7 +43,7 @@ Open je Vercel-URL op je telefoon en zet hem op je beginscherm (iPhone: Safari �
 | `lib/dates.ts` | Startdatum, racedatum en formattering |
 | `lib/useEntries.ts` | Opslag: localStorage + sync met `/api/entries` |
 | `app/api/entries/route.ts` | API voor lezen en opslaan in Redis |
-| `proxy.ts` | Wachtwoordbeveiliging (Basic Auth) |
+| `proxy.ts` · `app/login` · `app/api/login` | Wachtwoordbeveiliging met inlogpagina en cookie |
 | `app/page.tsx` · `components/Home.tsx` | Overzicht: fotohero met aftelklok, stand van zaken, deze week, voortgang, hartslag |
 | `app/trainingen/page.tsx` · `components/Workouts.tsx` | Trainingen: invoerformulier, logboek per maand (wijzigen/verwijderen) en volledig schema |
 | `components/AppShell.tsx` | Gedeelde staat voor beide pagina's: trainingen, max hartslag, logvenster, meldingen |

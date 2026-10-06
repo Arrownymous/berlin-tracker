@@ -48,17 +48,17 @@ function Today({ info }: { info: TodayInfo }) {
   const { openLog } = useApp();
   const d = parse(info.date);
   return (
-    <div className="today" aria-label="Vandaag">
+    <div className="nowb" aria-label="Vandaag">
       <span className="label">Vandaag · {DAYS[dowOf(d)]} {d.getDate()} {MON[d.getMonth()]}</span>
       {info.items.length ? (
         info.items.map(({ s, done }) => (
-          <div key={s.kind} className={`today-row${done ? " done" : ""}`}>
-            <div className="today-txt">
+          <div key={s.kind} className={`nowb-row${done ? " done" : ""}`}>
+            <div className="nowb-txt">
               <b>{s.title}</b>
               <span>{sizeOf(s)}</span>
             </div>
             {done ? (
-              <span className="today-done">Gedaan</span>
+              <span className="nowb-done">Gedaan</span>
             ) : (
               <button type="button" className="btn btn-light btn-sm" onClick={() => openLog({ date: s.date, type: s.kind, km: s.km || undefined, title: s.title })}>
                 Loggen
@@ -67,15 +67,15 @@ function Today({ info }: { info: TodayInfo }) {
           </div>
         ))
       ) : (
-        <div className="today-row">
-          <div className="today-txt">
+        <div className="nowb-row">
+          <div className="nowb-txt">
             <b>Rustdag</b>
             <span>{info.next ? `${nextDay(info.next.date, info.date)}: ${info.next.title}` : "Geniet ervan."}</span>
           </div>
           <button type="button" className="btn btn-ghost-light btn-sm" onClick={() => openLog({ date: info.date })}>Loggen</button>
         </div>
       )}
-      <Link className="today-all" href="/trainingen">Alle trainingen</Link>
+      <Link className="nowb-all" href="/trainingen">Alle trainingen</Link>
     </div>
   );
 }
@@ -131,7 +131,7 @@ export default function HomeHero({ today }: { today: TodayInfo | null }) {
               ))}
             </div>
           </div>
-          {today ? <Today info={today} /> : <div className="today today-ph" aria-hidden />}
+          {today ? <Today info={today} /> : <div className="nowb nowb-ph" aria-hidden />}
         </div>
       </div>
 

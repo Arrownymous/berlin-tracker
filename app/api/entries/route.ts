@@ -44,3 +44,27 @@ export async function PUT(req: NextRequest) {
   await redis.set(ENTRIES_KEY, entries);
   return NextResponse.json({ ok: true, count: entries.length });
 }
+
+/**
+ * Losse wijzigingen toepassen: { upserts: Entry[], deletes: string[] }.
+ * Elk toestel stuurt alleen wat het zelf veranderde, zodat het nooit de trainingen
+ * van een ander toestel overschrijft. Geeft de nieuwe volledige lijst terug.
+ */
+export async function PATCH(req: NextRequest) {
+  if (!redis) return NextResponse.json({ error: "no_storage" }, { status: 501 });
+  const body = await req.json().catch(() => null);
+  const upserts = clean(body?.upserts ?? []);
+  const deletes: unknown = body?.deletes ?? [];
+  if (!upserts || !Array.isArray(deletes) || deletes.length > 5000 || deletes.some((d) => typeof d !== "string")) {
+    return NextResponse.json({ error: "invalid" }, { status: 400 });
+  }
+  const del = new Set(deletes as string[]);
+  const byId = new Map(upserts.map((e) => [e.id, e]));
+  const current = (await redis.get<Entry[]>(ENTRIES_KEY)) ?? [];
+  const next = current.filter((e) => !del.has(e.id)).map((e) => byId.get(e.id) ?? e);
+  const known = new Set(current.map((e) => e.id));
+  for (const e of upserts) if (!known.has(e.id) && !del.has(e.id)) next.push(e);
+  if (next.length > 5000) return NextResponse.json({ error: "too_many" }, { status: 400 });
+  await redis.set(ENTRIES_KEY, next);
+  return NextResponse.json({ entries: next });
+}

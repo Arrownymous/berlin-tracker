@@ -11,6 +11,7 @@ import LogDialog, { type LogPreset } from "./LogDialog";
 export const SYNC: Record<SyncState, { label: string; cls: string; title: string }> = {
   loading: { label: "Laden…", cls: "", title: "Gegevens laden…" },
   server: { label: "Gesynct", cls: "ok", title: "Gesynct met je database." },
+  pending: { label: "Wacht op sync", cls: "wait", title: "Nog niet alles is verstuurd. Je trainingen staan veilig op dit toestel en gaan mee zodra er verbinding is." },
   local: { label: "Lokaal", cls: "", title: "Alleen op dit apparaat opgeslagen (geen database gekoppeld)." },
   error: { label: "Sync mislukt", cls: "err", title: "Synchroniseren mislukt; lokaal bewaard." },
 };

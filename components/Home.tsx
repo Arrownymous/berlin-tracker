@@ -119,7 +119,17 @@ export default function Home() {
 
   return (
     <main>
-      <HomeHero />
+      <HomeHero
+        today={
+          mounted
+            ? {
+                date: tIso,
+                items: allSessions.filter((s) => s.date === tIso).map((s) => ({ s, done: isDone(s) })),
+                next: allSessions.find((s) => s.date > tIso && !isDone(s)) ?? null,
+              }
+            : null
+        }
+      />
       {mounted ? (
         <>
           <Overview
